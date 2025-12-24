@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1765971411 source:d:\huttaqi\kuliah\matkul semeseter 3\struktur data\tubes\main.cpp
+	"header.h"
+
+1765968221 d:\huttaqi\kuliah\matkul semeseter 3\struktur data\tubes\header.h
+	<iostream>
+
+1765969699 source:d:\huttaqi\kuliah\matkul semeseter 3\struktur data\tubes\mll.cpp
+	"header.h"
+
