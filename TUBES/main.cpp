@@ -14,12 +14,13 @@ int main(){
         cout << "3. Hapus Rute" << endl;
         cout << "4. Hapus Jadwal dari Rute" << endl;
         cout << "5. Tampilkan Rute dan Jadwal" << endl;
-        cout << "6. Cari Rute berdasarkan Kota Asal/Tujuan" << endl;
+        cout << "6. Cari Rute berdasarkan Kota" << endl;
+        cout << "   Asal/Tujuan" << endl;
         cout << "7. Keluar" << endl;
         cout << "=================================" << endl;
         cout << "Masukkan pilihan menu: ";
         cin >> pilihanMenuUtama;
-        cout << "================================= " << endl;
+        cout << "=================================" << endl;
         switch (pilihanMenuUtama){
             case 1:
                 // Tambah Rute Baru
@@ -29,11 +30,13 @@ int main(){
             case 2:
                 // Tambah Jadwal ke Rute
                 displayList(L);
+                cout << endl;
                 tambahJadwalKeRute(L, r, j);
                 break;
             case 3:
                 // Hapus Rute
                 displayList(L);
+                cout << endl;
                 cout << "Masukkan Kode Rute yang akan dihapus: ";
                 cin >> kodeRute;
                 cout << "================================ " << endl;
@@ -63,6 +66,7 @@ int main(){
                 cin >> pilihanTampil;
                 if(pilihanTampil == 1){
                     displayList(L);
+                    cout << endl;
                 }else if(pilihanTampil == 2){
                     jadwalTerbanyak(L);
                 }
