@@ -3,58 +3,62 @@
 void tambahRuteBaru(listRute &L, adrRute &r, adrJadwal &j){
     // Menambah rute baru ke dalam list rute dengan input dari user (insert last)
     string kodeRute, kotaAsal, kotaTujuan, namaOperator;
-    cout << "===== Tambah Rute Baru =====" << endl;
-    cout << "Masukkan Kode Rute: ";
+    cout << "======== Tambah Rute Baru =======" << endl;
+    cout << "Masukkan Kode Rute     : ";
     cin >> kodeRute;
     cout << "--------------------------" << endl;
-    cout << "Masukkan Kota Asal: ";
+    cout << "Masukkan Kota Asal     : ";
     cin >> kotaAsal;
     cout << "--------------------------" << endl;
-    cout << "Masukkan Kota Tujuan: ";
+    cout << "Masukkan Kota Tujuan   : ";
     cin >> kotaTujuan;
     cout << "--------------------------" << endl;
-    cout << "Masukkan Nama Operator: ";
+    cout << "Masukkan Nama Operator : ";
     cin >> namaOperator;
-    cout << "==========================" << endl;
+    cout << "=================================" << endl;
 
+    cout << endl;
     if(uniqueRute(L, kodeRute)){
         adrRute r = createElemenRute(kodeRute, kotaAsal, kotaTujuan, namaOperator);
         addRute(L, r);
+        cout << "=================================" << endl;
         cout << "Rute berhasil ditambahkan." << endl;
-        cout << "==========================" << endl;
-        displayList(L);
+        cout << "=================================" << endl;
     } else {
-        cout << "Kode Rute sudah ada. Rute tidak ditambahkan." << endl;
+        cout << "=================================" << endl;
+        cout << "Kode Rute sudah ada." << endl;
+        cout << "Rute tidak ditambahkan." << endl;
         cout << "==========================" << endl;
     }
 }
 
 void tambahJadwalKeRute(listRute &L, adrRute &r, adrJadwal &j){
-    // Menambah jadwal ke rute yang sudah ada dengan input dari user
-    string waktuKeberangkatan, waktuTiba;
-    string kodeRute;
-    cout << "===== Tambah Jadwal ke Rute =====" << endl;
-    cout << "Masukkan Kode Rute untuk menambah Jadwal: " << endl;
-    cout << "--------------------------" << endl;
+    string kodeRute, waktuKeberangkatan, waktuTiba;
+
+    cout << "=================================" << endl;
+    cout << "      TAMBAH JADWAL KE RUTE       " << endl;
+    cout << "=================================" << endl;
+
+    cout << "Kode Rute          : ";
     cin >> kodeRute;
+
     r = searchRute(L, kodeRute);
     if(r != nullptr){
-        cout << "==========================" << endl;
-        cout << "Masukkan Waktu Keberangkatan: ";
+        cout << "Waktu Berangkat    : ";
         cin >> waktuKeberangkatan;
-        cout << "--------------------------" << endl;
-        cout << "Masukkan Waktu Tiba: ";
+        cout << "Waktu Tiba         : ";
         cin >> waktuTiba;
-        adrJadwal j = creteElemenJadwal(waktuKeberangkatan, waktuTiba);
+
+        j = creteElemenJadwal(waktuKeberangkatan, waktuTiba);
         addJadwal(r, j);
-        cout << "Jadwal berhasil ditambahkan ke Rute." << endl;
-        cout << "==========================" << endl;
-        displayList(L);
+
+        cout << "Jadwal berhasil ditambahkan." << endl;
     } else {
-        cout << "Kode Rute tidak ditemukan. Jadwal tidak ditambahkan." << endl;
-        cout << "==========================" << endl;
+        cout << "Rute tidak ditemukan." << endl;
     }
+    cout << "=================================" << endl;
 }
+
 void hapusjadwal(listRute &L,adrRute &r, string kodeRute, jadwal waktu){
     // Implementasi penghapusan rute berdasarkan kodeRute
     if(isEmptyRute(L)){
@@ -245,12 +249,14 @@ void displayList(listRute L){
     // Menampilkan list rute beserta jadwalnya
     adrRute tempRute = L.first;
     int i = 1;
+    cout << endl;
     if (isEmptyRute(L)){
-        cout << "tidak ada rute dan jadwal" << endl;
+        cout << "  tidak ada rute dan jadwal" << endl;
+        cout << endl;
+        cout << "================================= " << endl;
     }
     while(tempRute != nullptr){
-        cout << "  =========================" << endl;
-        cout << i << ".Kode Rute    : " << tempRute->info.kodeRute << endl;
+        cout << i << ".Kode Rute        : " << tempRute->info.kodeRute << endl;
         cout << "  ------------------------" << endl;
         cout << "  Kota Asal        : " << tempRute->info.kotaAsal << endl;
         cout << "  ------------------------" << endl;
@@ -259,20 +265,21 @@ void displayList(listRute L){
         cout << "  Nama Operator    : " << tempRute->info.namaOperator << endl;
         cout << "  ------------------------" << endl;
         cout << "  Jadwal           :" << endl;
-        cout << "  ========================" << endl;
+        cout << "=================================" << endl;
 
         adrJadwal tempJadwal = tempRute->firstJadwal;
         if(tempJadwal == nullptr){
             cout << "  Belum ada jadwal" << endl;
+            cout << "=================================" << endl;
         }
         int j = 1;
         while(tempJadwal != nullptr){
-            cout << "   " << j << ".Waktu Keberangkatan: " << tempJadwal->info.waktuKeberangkatan << endl;
-            cout << "     Waktu Tiba: " << tempJadwal->info.waktuTiba << endl;
+            cout << "   " << j << ".Waktu Keberangkatan : " << tempJadwal->info.waktuKeberangkatan << endl;
+                          cout << "     Waktu Tiba          : " << tempJadwal->info.waktuTiba << endl;
             tempJadwal = tempJadwal->next;
             j++;
         }
-        cout << "  ========================" << endl;
+        cout << endl;
         tempRute = tempRute->next;
         i++;
     }
